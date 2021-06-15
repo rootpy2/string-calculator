@@ -15,9 +15,12 @@ public class StringCalculator {
             final int endIndex = expr.indexOf("\n");
             default_delimiter = expr.substring(2, endIndex);
 
-            // check for any length delimiter
+            // check for multiple delimiter
             if (default_delimiter.contains("[")) {
-                default_delimiter = default_delimiter.substring(1, default_delimiter.length() - 1);
+
+                final String delimiter_regex = "\\]|\\[";
+                default_delimiter = Arrays.stream(default_delimiter.split(delimiter_regex))
+                        .filter(s -> !"".equals(s)).collect(Collectors.joining("|"));
             }
             expr = expr.substring(endIndex + 1);
         }
