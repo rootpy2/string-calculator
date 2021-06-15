@@ -85,6 +85,14 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void testAddDelimiterWithAnyLength() {
+        int expected = 6;
+        int actual = calculator.Add("//[***]\n1***2***3");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void testGetCallCount() {
         int expected = 4;
 

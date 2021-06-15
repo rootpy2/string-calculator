@@ -12,9 +12,19 @@ public class StringCalculator {
 
         // If Delimiter is defined, update delimiter and expr
         if (expr.contains("//")) {
-            int endIndex = expr.indexOf("\n");
+            final int endIndex = expr.indexOf("\n");
             default_delimiter = expr.substring(2, endIndex);
+
+            // check for any length delimiter
+            if (default_delimiter.contains("[")) {
+                default_delimiter = default_delimiter.substring(1, default_delimiter.length() - 1);
+            }
             expr = expr.substring(endIndex + 1);
+        }
+
+        // handle dangling meta character
+        if (default_delimiter.contains("*")) {
+            default_delimiter = default_delimiter.replaceAll("\\*", "\\\\*");
         }
 
         if (expr.contains("-")) {
