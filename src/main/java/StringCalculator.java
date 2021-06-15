@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
     public int Add(String expr) {
@@ -11,6 +12,16 @@ public class StringCalculator {
             int endIndex = expr.indexOf("\n");
             default_delimiter = expr.substring(2, endIndex);
             expr = expr.substring(endIndex + 1);
+        }
+
+        if (expr.contains("-")) {
+            String negativeNumbers = Arrays.stream(expr.split(default_delimiter))
+                    .map(Integer::parseInt)
+                    .filter(number -> number < 0)
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", "));
+
+            throw new IllegalArgumentException(String.format("negatives not allowed: %s", negativeNumbers));
         }
 
         return Arrays
