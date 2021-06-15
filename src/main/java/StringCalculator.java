@@ -2,7 +2,10 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class StringCalculator {
+    private int calledCount = 0;
+
     public int Add(String expr) {
+        this.calledCount++;
         if ("".equals(expr)) return 0;
 
         String default_delimiter = "\n|,";
@@ -28,5 +31,9 @@ public class StringCalculator {
                 .stream(expr.split(default_delimiter))
                 .mapToInt(Integer::parseInt)
                 .sum();
+    }
+
+    public int GetCalledCount() {
+        return this.calledCount;
     }
 }

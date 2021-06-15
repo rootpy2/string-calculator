@@ -75,4 +75,18 @@ public class StringCalculatorTest {
 
         assertEquals(expectedMessage, exception.getMessage());
     }
+
+    @Test
+    public void testGetCallCount() {
+        int expected = 4;
+
+        calculator.Add("");
+        calculator.Add("");
+        calculator.Add("");
+        calculator.Add("");
+
+        int actual = calculator.GetCalledCount();
+
+        assertEquals(expected, actual);
+    }
 }
