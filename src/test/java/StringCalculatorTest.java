@@ -77,6 +77,14 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void testAddNumberGreaterThan1000() {
+        int expected = 2;
+        int actual = calculator.Add("2,1001");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void testGetCallCount() {
         int expected = 4;
 

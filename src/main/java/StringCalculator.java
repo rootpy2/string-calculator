@@ -30,6 +30,7 @@ public class StringCalculator {
         return Arrays
                 .stream(expr.split(default_delimiter))
                 .mapToInt(Integer::parseInt)
+                .filter(number -> number <= 1000)
                 .sum();
     }
 
