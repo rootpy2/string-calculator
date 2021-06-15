@@ -57,4 +57,12 @@ public class StringCalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testAddWithDifferentDelimiters(){
+        int expected = 3;
+        int actual = calculator.Add("//;\n1;2");
+
+        assertEquals(expected, actual);
+    }
 }
