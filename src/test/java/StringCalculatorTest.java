@@ -41,4 +41,12 @@ public class StringCalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testAddMoreThanTwoNumbers(){
+        int expected = 55;
+        int actual = calculator.Add("1,2,3,4,5,6,7,8,9,10");
+
+        assertEquals(expected, actual);
+    }
 }

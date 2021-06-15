@@ -1,8 +1,12 @@
+import java.util.Arrays;
+
 public class StringCalculator {
     public int Add(String expr) {
-        if (expr.equals("")) return 0;
-        if (expr.equals("1")) return 1;
-        if (expr.equals("1,2")) return 3;
-        return -1;
+        if ("".equals(expr)) return 0;
+
+        return Arrays
+                .stream(expr.split(","))
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 }
