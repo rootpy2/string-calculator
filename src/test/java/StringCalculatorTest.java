@@ -49,4 +49,12 @@ public class StringCalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testAddWithNewLineSep(){
+        int expected = 6;
+        int actual = calculator.Add("1\n2,3");
+
+        assertEquals(expected, actual);
+    }
 }
